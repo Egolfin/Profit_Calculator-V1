@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Simple remaining-after-marketing-and-commission calculator.">
+  <title>Profit_Calculator V1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="calculator-card" aria-labelledby="app-title">
+      <div class="brand-row">
+        <img class="brand-logo" src="profit-calculator-logo.png" alt="Profit_Calculator V1 logo">
+        <div>
+          <div class="eyebrow">FINANCIAL QUICK CHECK</div>
+          <h1 id="app-title">Profit_Calculator <span class="version">V1</span></h1>
+        </div>
+      </div>
+
+      <p class="subtitle">Enter three values to see what remains after commission and marketing.</p>
+
+      <form id="calculator" novalidate>
+        <div class="input-stack">
+          <label class="field">
+            <span class="field-label">Estimated sales</span>
+            <span class="input-wrap">
+              <span class="prefix">$</span>
+              <input id="sales" name="sales" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" autocomplete="off" aria-describedby="sales-help">
+            </span>
+            <span class="helper" id="sales-help">Expected sales for the period.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Commission rate (%)</span>
+            <span class="input-wrap">
+              <input id="commissionRate" name="commissionRate" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" autocomplete="off" aria-describedby="rate-help">
+              <span class="suffix">%</span>
+            </span>
+            <span class="helper" id="rate-help">Enter the percentage exactly as shown in your agreement.</span>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Marketing investment</span>
+            <span class="input-wrap">
+              <span class="prefix">$</span>
+              <input id="marketing" name="marketing" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" autocomplete="off">
+            </span>
+          </label>
+        </div>
+
+        <div class="result-card" aria-live="polite">
+          <div class="result-topline">
+            <span>Remaining after marketing &amp; commission</span>
+            <span class="result-status" id="statusPill">WAITING</span>
+          </div>
+          <div class="result-value" id="remaining">$0.00</div>
+          <div class="result-note" id="resultNote">Add your inputs to calculate the remaining amount.</div>
+        </div>
+
+        <div class="breakdown" id="breakdown" hidden>
+          <div><span>Commission amount</span><strong id="commissionAmount">$0.00</strong></div>
+          <div><span>Net after commission</span><strong id="netAfterCommission">$0.00</strong></div>
+        </div>
+
+        <button class="reset-btn" id="resetBtn" type="button">Reset calculator</button>
+      </form>
+    </section>
+
+    <footer>Formula: Estimated sales − (Estimated sales × Commission rate) − Marketing investment</footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
